@@ -1,0 +1,11 @@
+version: '2.4'
+
+services:
+  error:
+    container_name: error
+    hostname: error
+    image: casanode${REPOSITORY_ADDENDUM}/error:${TAG}-2.0.0
+    ports:
+      - "80:80"
+    labels:
+      - casa=persist

@@ -1,0 +1,6 @@
+{
+  "device-host": {
+    "arm": "sha256:6c97e96f31c3236b1931c6dae233e845185abd1f509762184c45dcee4172ee4b",
+    "x86": "sha256:50b8b4b1774b547d816457be3a8946c6fe1652c8c19ce9883c05aeabe143f3ad"
+  }
+}

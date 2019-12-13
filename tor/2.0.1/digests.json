@@ -1,0 +1,6 @@
+{
+  "tor": {
+    "arm": "sha256:173c731b578dd2cce5deecef829068fa6dba94e703735f24a45e4d0ae7ce22c7",
+    "x86": "sha256:9f25312b1192578519e9dd45b8790221c03a8fe4db9eecbe4d020e5de189d5b8"
+  }
+}

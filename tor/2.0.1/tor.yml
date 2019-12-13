@@ -1,0 +1,17 @@
+version: '2.4'
+
+services:
+  tor:
+    container_name: tor
+    hostname: tor
+    restart: unless-stopped
+    image: casanode${REPOSITORY_ADDENDUM}/tor:${TAG}-2.0.1
+    volumes:
+      - applications_tor-cookie:/root/.tor/
+      - applications_tor-hidden-services:/var/lib/tor/
+
+volumes:
+  applications_tor-hidden-services:
+    external: true
+  applications_tor-cookie:
+    external: true
