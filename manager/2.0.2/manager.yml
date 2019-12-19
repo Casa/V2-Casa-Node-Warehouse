@@ -5,7 +5,7 @@ services:
     container_name: manager
     hostname: manager
     restart: always
-    image: casanode${REPOSITORY_ADDENDUM}/manager:${TAG}-2.0.0
+    image: casanode${REPOSITORY_ADDENDUM}/manager:${TAG}-2.0.1
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - /usr/bin/docker:/usr/bin/docker
