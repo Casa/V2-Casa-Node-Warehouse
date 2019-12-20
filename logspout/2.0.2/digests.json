@@ -1,0 +1,10 @@
+{
+  "syslog": {
+    "arm": "sha256:ff4e9d323c31614eac8c146cb6f856bb2054318be28f228d0d4d8da512257f1c",
+    "x86": "sha256:b96f06ea66e9c142cbec00d7d88e47bf2fa0969d1b3a2f00f2b5361413673b0a"
+  },
+  "logspout": {
+    "arm": "sha256:f26a40a7995173552a3e747fe3a4c99109c9167ecdade90dfa872caef4e6163e",
+    "x86": "sha256:94f4108c82768c447a43385ee8ca15946aeb316d9bc6fe1351990f9187eda0d7"
+  }
+}
