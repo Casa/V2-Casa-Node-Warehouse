@@ -1,0 +1,94 @@
+version: '2.4'
+
+services:
+  bitcoind:
+    container_name: bitcoind
+    hostname: bitcoind
+    restart: unless-stopped
+    image: casanode${REPOSITORY_ADDENDUM}/bitcoind:${TAG}-2.0.1
+    ports:
+      - "8333:8333"
+      - "8332:8332"
+    entrypoint: ./chains/bitcoind/start_bitcoind.sh
+    volumes:
+      - bitcoind-data:/usr/local/casa/chains/bitcoind/data
+      - applications_tor-cookie:/root/.tor/:ro # remove this volume after lnd can use tor passwords
+    environment:
+      - BITCOIN_NETWORK
+      - BITCOIND_LISTEN
+      - BITCOIND_PORT
+      - RPC_USER
+      - RPC_PASSWORD
+      - BITCOIND_TOR
+      - TOR_ONLY
+    mem_limit: 1024m
+    memswap_limit: -1 # unlimited access to device swap
+
+  lnapi:
+    container_name: lnapi
+    hostname: lnapi
+    restart: unless-stopped
+    image: casanode${REPOSITORY_ADDENDUM}/lnapi:${TAG}-2.0.1
+    ports:
+      - "3002:3002"
+    volumes:
+      - lnd-data:/lnd:ro
+      - channel-data:/channel-data
+    environment:
+      - BITCOIN_NETWORK
+      - CASA_NODE_HIDDEN_SERVICE
+      - DEVICE_HOST
+      - LND_NETWORK
+      - JWT_PUBLIC_KEY
+      - RPC_USER
+      - RPC_PASSWORD
+
+  lnd:
+    container_name: lnd
+    hostname: lnd
+    restart: unless-stopped
+    image: casanode${REPOSITORY_ADDENDUM}/lnd:${TAG}-2.0.0
+    ports:
+      - "9735:9735"
+    depends_on:
+      - bitcoind
+    entrypoint: ./chains/lnd/start_lnd.sh
+    volumes:
+      - lnd-data:/root/.lnd #TODO: split up data, config
+      - applications_tor-cookie:/root/.tor/:ro # remove this volume after lnd can use tor passwords
+      - /usr/local/casa/scb:/root/.lnd/data/scb/
+    environment:
+      - AUTOPILOT
+      - BACKEND
+      - CHAIN
+      - COLOR
+      - EXTERNAL_IP
+      - LND_NETWORK
+      - LND_NODE_ALIAS
+      - MAX_CHANNELS
+      - MAX_CHAN_SIZE
+      - MIN_CHAN_SIZE
+      - RPC_USER
+      - RPC_PASSWORD
+      - LND_TOR
+
+  space-fleet:
+    container_name: space-fleet
+    hostname: space-fleet
+    restart: unless-stopped
+    image: casanode${REPOSITORY_ADDENDUM}/space-fleet:${TAG}-2.1.2
+    ports:
+      - "80:3000"
+    environment:
+      - CASA_NODE_HIDDEN_SERVICE
+      - DEVICE_HOST
+    mem_limit: 256m
+    memswap_limit: -1 # unlimited access to device swap
+    oom_kill_disable: true
+
+volumes:
+  channel-data:
+  bitcoind-data:
+  lnd-data:
+  applications_tor-cookie: # remove this volume after lnd can use tor passwords
+    external: true

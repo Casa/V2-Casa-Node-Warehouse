@@ -1,0 +1,6 @@
+{
+  "manager": {
+    "arm": "sha256:0264ac6135a6ab71736e433a33f48a2685d62cd46401e818d26f4be5ab46def5",
+    "x86": "sha256:b8d5f2631e68f3a0c2a7f530100b2f3c779c3ec91e8d7f2a619e3ae906bf8736"
+  }
+}
