@@ -1,0 +1,43 @@
+version: '2.4'
+
+services:
+  manager:
+    container_name: manager
+    hostname: manager
+    restart: always
+    image: casanode${REPOSITORY_ADDENDUM}/manager:${TAG}-2.3.0
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /usr/bin/docker:/usr/bin/docker
+      - /usr/local/bin/docker-compose:/usr/local/bin/docker-compose
+      - /usr/local/casa/applications:/usr/local/casa/applications
+      - /usr/local/casa/service-scripts:/usr/local/casa/service-scripts
+      - /usr/local/casa/signals:/usr/local/casa/signals
+      - /usr/local/casa:/usr/local/casa
+      - accounts:/accounts
+      - settings:/settings
+      - tor-cookie:/root/.tor/ # remove this volume after lnd can use tor passwords
+      - tor-hidden-services:/var/lib/tor/
+    ports:
+      - "3000:3000"
+    environment:
+      - DEVICE_HOST
+      - CASABUILDER_PASSWORD
+      - CASABUILDER_GIT_PASSWORD
+      - DISABLE_YML_UPDATE
+      - REPOSITORY_ADDENDUM
+      - SYSTEM_USER
+      - TAG
+    labels:
+      - casa=persist
+    mem_limit: 256m
+    memswap_limit: -1 # unlimited access to device swap
+    oom_kill_disable: true
+
+volumes:
+  settings:
+  tor-cookie: # remove this volume after lnd can use tor passwords
+  tor-hidden-services:
+  accounts:
+    labels:
+      - casa=persist
