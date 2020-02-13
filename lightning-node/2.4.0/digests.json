@@ -1,0 +1,18 @@
+{
+  "bitcoind": {
+    "arm": "sha256:0acf1887758d3dd0ed2b6fdf525bad19b009c7a0593c58afe07fc4fd10db03db",
+    "x86": "sha256:8d6b9c018daf265771fce0783d141b150c40ec8d00ab8e9a492a3b63857b8d81"
+  },
+  "lnd": {
+    "arm": "sha256:7f689726b50f740a1f6c8cfeb676fb94839ee16050d7428eb87e76fb8408b433",
+    "x86": "sha256:773fb1916cd186f03a6bb12291eb8d1c5edffd86b1cfb5f0e91f5cb32252d15c"
+  },
+  "lnapi": {
+    "arm": "sha256:2245bd8d68ecccaebe8c647fca0878ac75194c4bc4e007354b4c15397499874f",
+    "x86": "sha256:8f41508d88b9066134138a05e91d5427a2620e364d227fc3d867a412f967dba2"
+  },
+  "space-fleet": {
+    "arm": "sha256:280f350d4c9fb31e6a50c73e05aa91bd12e0dbad74d8113cfc5af62b318903b3",
+    "x86": "sha256:70cebabcc017150a1a6cab13565c2267376e78f858da95300f3c8a432fb443ca"
+  }
+}
