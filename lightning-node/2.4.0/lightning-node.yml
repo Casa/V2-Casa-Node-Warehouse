@@ -28,7 +28,7 @@ services:
     container_name: lnapi
     hostname: lnapi
     restart: unless-stopped
-    image: casanode${REPOSITORY_ADDENDUM}/lnapi:${TAG}-2.0.1
+    image: casanode${REPOSITORY_ADDENDUM}/lnapi:${TAG}-2.1.0
     ports:
       - "3002:3002"
     volumes:
